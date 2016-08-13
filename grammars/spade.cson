@@ -1,0 +1,62 @@
+'scopeName': 'source.spade'
+'name': 'SPADE'
+'fileTypes': ['spade', 'pa']
+
+'patterns': [
+  {
+    'begin': '/\\*'
+    'end': '\\*/'
+    'name': 'comment.block.spade'
+  },
+  {
+    'begin': '//'
+    'end': '\\n'
+    'name': 'comment.line.spade'
+  },
+  {
+    'begin': '"'
+    'end': '"'
+    'name': 'entity.name.section.spade'
+  },
+  {
+    'begin': "'"
+    'end': "'"
+    'name': 'string.quoted.single.spade'
+  },
+  {
+    'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b'
+    'name': 'constant.numeric.spade'
+  },
+  {
+    'match': '\\b(true|false|emtpy)\\b'
+    'name': 'constant.language.spade'
+  },
+  {
+    'match': '\\b(Process|description|key)\\b'
+    'name': 'keyword.other.spade'
+  },
+  {
+    'match': 'The following'
+    'name': 'keyword.control.spade'
+  },
+  {
+    'match': '\\b(and|or|not|old|exists)\\b'
+    'name': 'keyword.operator.spade'
+  },
+  {
+    'match': 'if|then|else'
+    'name': 'keyword.control.spade'
+  },
+  {
+    'match': 'input|from|based on|chosen from'
+    'name': 'keyword.control.spade'
+  },
+  {
+    'match': '\\b(For|the|each|exists|in|applies)\\b'
+    'name': 'keyword.control.spade'
+  },
+  {
+    'match': '\\b(count|integer|decimal)\\b'
+    'name': 'entity.name.function.spade'
+  },
+]
