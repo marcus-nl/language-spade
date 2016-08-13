@@ -11,20 +11,10 @@
             "include": "#strings"
         },
         {
-            "include": "#keywords"
+            "include": "#sentences"
         },
         {
-            "begin": "\"",
-            "end": "\"",
-            "name": "entity.name.section.spade",
-            "comment": "entity.other.attribute-name.spade entity.name.section.spade",
-            "patterns": [
-                { "include": "#placeholders" },
-                {
-                    "match": "foo",
-                    "name": "constant.language.spade"
-                }
-            ]
+            "include": "#keywords"
         },
         {
             "match": "\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b",
@@ -33,14 +23,6 @@
         {
             "match": "\\b(true|false|emtpy)\\b",
             "name": "constant.language.spade"
-        },
-        {
-            "match": "\\b(Process|with subject|description|key)\\b",
-            "name": "keyword.other.spade"
-        },
-        {
-            "match": "\\b(The following)\\b",
-            "name": "keyword.control.spade"
         },
         {
             "match": "\\b(one|first|count|sum|integer|decimal|sorted|currentDate)(\\()\\b",
@@ -67,6 +49,49 @@
                 }
             ]
         },
+        "strings": {
+            "patterns": [
+                {
+                    "begin": "(')",
+                    "end": "(')",
+                    "beginCaptures": {
+                        "1": { "name": "string.quoted.single.spade" }
+                    },
+                    "endCaptures": {
+                        "1": { "name": "string.quoted.single.spade" }
+                    },
+                    "patterns": [
+                        { "include": "#placeholders" },
+                        {
+                            "match": "[^{']*",
+                            "name": "string.quoted.single.spade"
+                        }
+                    ]
+                }
+            ]
+        },
+        "sentences": {
+            "patterns": [
+                {
+                    "begin": "(\")",
+                    "end": "(\")",
+                    "beginCaptures": {
+                        "1": { "name": "entity.name.section.spade" }
+                    },
+                    "endCaptures": {
+                        "1": { "name": "entity.name.section.spade" }
+                    },
+                    "comment": "entity.other.attribute-name.spade entity.name.section.spade",
+                    "patterns": [
+                        { "include": "#placeholders" },
+                        {
+                            "match": "[^{\"]*",
+                            "name": "entity.name.section.spade"
+                        }
+                    ]
+                }
+            ]
+        },
         "placeholders": {
             "patterns": [
                 {
@@ -79,20 +104,16 @@
                 }
             ]
         },
-        "strings": {
-            "patterns": [
-                {
-                    "begin": "'",
-                    "end": "'",
-                    "contentName": "string.quoted.single.spade",
-                    "patterns": [
-                        { "include": "#placeholders" }
-                    ]
-                }
-            ]
-        },
         "keywords": {
             "patterns": [
+                {
+                    "match": "\\b(Process|with subject|description|key)\\b",
+                    "name": "keyword.other.spade"
+                },
+                {
+                    "match": "\\b(The following)\\b",
+                    "name": "keyword.control.spade"
+                },
                 {
                     "match": "\\b(and|or|not|old|exists)\\b",
                     "name": "keyword.operator.spade"
