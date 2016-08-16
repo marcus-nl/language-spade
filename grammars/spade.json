@@ -56,7 +56,11 @@
                     "patterns": [
                         { "include": "#placeholders" },
                         {
-                            "match": "[^{']*",
+                            "match": "\\\\.",
+                            "name": "constant.character.escape.spade"
+                        },
+                        {
+                            "match": "[^{'\\\\]*",
                             "name": "string.quoted.single.spade"
                         }
                     ]
@@ -77,7 +81,11 @@
                     "patterns": [
                         { "include": "#placeholders" },
                         {
-                            "match": "[^{\"]*",
+                            "match": "\\\\.",
+                            "name": "constant.character.escape.spade"
+                        },
+                        {
+                            "match": "[^{\"\\\\]*",
                             "name": "entity.name.section.spade"
                         }
                     ],
